@@ -6,5 +6,6 @@ namespace Core
 {
    public class Student
     {
+        public String Id { get; set; }
     }
 }
