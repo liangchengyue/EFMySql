@@ -4,32 +4,27 @@ using System.Text;
 
 namespace Core
 {
-   public class Student
+   public class Course
     {
         /// <summary>
-        /// 学号
+        /// 课程号
         /// </summary>
         public virtual string No { get; set; }
         /// <summary>
-        /// 姓名
+        /// 课程名
         /// </summary>
         public virtual string Name { get; set; }
         /// <summary>
-        /// 性别
+        /// 学分
         /// </summary>
-        public virtual string Gender { get; set; }
+        public virtual float Credit { get; set; }
         /// <summary>
-        /// 电话号码    
+        /// 先行课
         /// </summary>
-        public virtual string Phone { get; set; }
-        /// <summary>
-        /// 地址
-        /// </summary>
-        public virtual string Address { get; set; }
-        /// <summary>
-        /// 生日
-        /// </summary>
-        public virtual DateTime Birthday { get; set; }
+        public virtual string ParentNo { get; set; }
+        
+        public virtual Course Parent { get; set; }
+        public virtual ICollection<Course> Children { get; set; } = new List<Course>();
         public virtual ICollection<SC> SCs { get; set; } = new List<SC>();
     }
 }
