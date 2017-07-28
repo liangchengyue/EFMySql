@@ -13,5 +13,10 @@ namespace Web.Controllers
         {
             return View();
         }
+        public string GetList(int pageSize)
+        {
+            string data = "{\"rows\": [ { \"No\": \"1400170322\", \"Name\": \"梁城月\", \"Gender\": \"男\"  }, {\"No\": \"1400170322\",\"Name\": \"梁城月\",\"Gender\": \"男\" }],\"results\": 2, \"hasError\": false, \"error\": \"\" }";
+            return data;
+        }
     }
 }

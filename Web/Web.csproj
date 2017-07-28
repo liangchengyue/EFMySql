@@ -207,6 +207,7 @@
     <Content Include="BUI\build\chart.js" />
     <Content Include="BUI\build\common-min.js" />
     <Content Include="BUI\build\common.js" />
+    <Content Include="BUI\build\config.js" />
     <Content Include="BUI\build\cookie-min.js" />
     <Content Include="BUI\build\cookie.js" />
     <Content Include="BUI\build\css\bs3\bui-min.css" />
@@ -860,7 +861,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\Student\index.js" />
+    <Content Include="Scripts\Student\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -876,6 +877,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Scripts\Student\data.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
