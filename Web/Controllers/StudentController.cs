@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Unit.Dto;
+using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +15,15 @@ namespace Web.Controllers
         {
             return View();
         }
-        public string GetList(int pageSize)
+        public JsonResult GetList()
         {
-            string data = "{\"rows\": [ { \"No\": \"1400170322\", \"Name\": \"梁城月\", \"Gender\": \"男\"  }, {\"No\": \"1400170322\",\"Name\": \"梁城月\",\"Gender\": \"男\" }],\"results\": 2, \"hasError\": false, \"error\": \"\" }";
-            return data;
+            var list = new ListDto<Student>();
+            var l = new List<Student>();
+            l.Add(new Student { No = "1400170322", Name = "梁城月", Gender = "男" });
+            l.Add(new Student { No = "1400170322", Name = "lcy", Gender = "男" });
+            list.rows = l;
+            list.results = 2;
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
 }

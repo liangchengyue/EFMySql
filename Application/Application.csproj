@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Students\StudentAppService.cs" />
+    <Compile Include="Unit\Dto\ListDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
