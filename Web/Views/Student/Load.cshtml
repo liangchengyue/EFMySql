@@ -9,11 +9,32 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Upload</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        function doUpload() {
+            var formData = new FormData($("#uploadForm")[0]);
+            $.ajax({
+                url: 'Upload',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (returndata) {
+                    alert(returndata);
+                }
+            });
+        } 
+    </script>
 </head>
 <body>
-    <form action="Upload" method="post" enctype="multipart/form-data">
+    <form id="uploadForm" action="Upload" method="post" enctype="multipart/form-data">
         <input type="file" value="上传图片" name="filedata" />
-        <input type="submit" value="上传文件" />
+        <input type="button" value="上传文件" onclick="doUpload()" />
     </form>
 
 </body>
