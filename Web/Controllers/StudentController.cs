@@ -3,9 +3,10 @@ using Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ICSharpCode.SharpZipLib.Core;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace Web.Controllers
 {
@@ -59,6 +60,51 @@ namespace Web.Controllers
             {
                 return Json(new { ret = false, message = "请选择要上传的文件" });
             }
+        }
+        public ActionResult DownZip()
+        {
+            string path = "~";
+            if (!Directory.Exists(Server.MapPath("~/Zip")))
+            {
+                List<string> list = new List<string>();
+                list.Add(@"D:\print.txt");
+                list.Add(@"D:\print - 副本.txt");
+                Directory.CreateDirectory(Server.MapPath("~/Zip"));
+                try
+                {
+                    List<string> filenames = new List<string>();
+                    using (FileStream fs=System.IO.File.Create(Server.MapPath(path+".zip")))
+                    {
+                        using (ZipOutputStream zips=new ZipOutputStream(fs))
+                        {
+                            foreach (var item in list)
+                            {
+                                FileInfo fi = new FileInfo(item);
+                                string entryname = System.IO.Path.GetFileName(item);
+                                ZipEntry zipEntry = new ZipEntry(entryname);
+                                zipEntry.DateTime = fi.LastWriteTime;
+                                zipEntry.Size = fi.Length;
+                                zips.PutNextEntry(zipEntry);
+                                byte[] buffer = new byte[4096];
+                                using (FileStream streamReader = System.IO.File.OpenRead(item))
+                                {
+                                }
+                                zips.CloseEntry();
+                            }
+                            zips.IsStreamOwner = false;
+                            zips.Finish();
+                            zips.Close();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
+            }
+            return File(Server.MapPath(path), "application/zip", "免冠照片.zip");
         }
     }
 }
